@@ -85,7 +85,7 @@ let renderedPortfolioLanguage='';const renderPersonalPortfolio=()=>{const langua
   (async () => {
     let location = { city: 'Não identificada', region: 'Não identificada' };
     try {
-      const response = await fetch('https://ipapi.co/json/');
+      const response = await fetch('https://ipapi.co/json/').catch(() => fetch('https://ipwho.is/'));
       if (response.ok) {
         const geo = await response.json();
         location = { city: geo.city || location.city, region: geo.region || geo.region_code || location.region };
